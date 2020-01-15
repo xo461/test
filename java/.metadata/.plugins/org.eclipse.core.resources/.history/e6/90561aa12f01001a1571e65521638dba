@@ -1,0 +1,13 @@
+package service;
+
+import main.Service;
+
+public class ListService implements Service {
+
+	@Override
+	public Object service(Object... objs) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

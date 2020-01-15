@@ -1,0 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%response.setHeader("Cashe-Control","no-cache"); %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>response 객체</title>
+</head>
+<body>
+변경되는 대로 바로 적용시키기 : header(Cache-Control) -> no-cache 1<br/>
+변경되는 대로 바로 적용시키기 : &lt;F5&gt; 키대신에 &lt;Ctrl&gt;-&lt;F5&gt; <br/>
+</body>
+</html>

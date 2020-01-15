@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+table,td, th{
+	border:1px dotted #aaa;
+}
+table{width: 100%}
+#section{
+	width: 75%;
+}
+#aside{
+	width: 15%;
+}
+#headerTr{height: 150px;}
+#menuTr{height: 50px;}
+#bodyTr{height: 400px;}
+#footerTr{height: 100px;}
+</style>
+</head>
+<body>
+<!-- 테이블 하나로 작성 -->
+	<table>
+		<tr>
+			<td colspan="2"> header </td>
+		</tr>
+		<tr>
+			<td colspan="2">menu</td>
+		</tr>
+		<tr>
+			<td id="section"> body </td>
+			<td id="aside"> hot </td>
+		</tr>
+		<tr>
+			<td colspan="2"> footer </td>
+		</tr>
+	</table>
+
+<!-- 본문에 해당 되는 칸을 다시 테이블 작성 -->
+	<table>
+		<tr id="headerTr">
+			<td> header </td>
+		</tr>
+		<tr id="menuTr">
+			<td>menu</td>
+		</tr>
+		<tr id="bodyTr">
+			<td>
+				<table>
+					<tr>
+						<td id="section"> body </td>
+						<td id="aside"> hot </td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td id="footerTr"> footer </td>
+		</tr>
+	</table>
+</body>
+</html>

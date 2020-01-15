@@ -1,0 +1,7 @@
+package svn.board.dto;
+
+public class BoardDTO {
+
+	private int no;
+	private String title;
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="HistoryTableProvider.SVNHistoryPage.Revision" value="57"/>
+	<item key="HistoryTableProvider.SVNHistoryPage.Date" value="141"/>
+	<item key="HistoryTableProvider.SVNHistoryPage.Author" value="112"/>
+	<item key="HistoryTableProvider.SVNHistoryPage.Comment" value="280"/>
+	<item key="CommitDialog.location.x" value="373"/>
+	<item key="CommitDialog.location.y" value="0"/>
+	<item key="CommitDialog.size.x" value="1174"/>
+	<item key="CommitDialog.size.y" value="1040"/>
+	<item key="CommitDialog.weights.0" value="500"/>
+	<item key="CommitDialog.weights.1" value="500"/>
+	<section name="NewLocationWizard">
+		<list key="ConfigurationWizardMainPage.STORE_URL_ID">
+			<item value="https://402-svn/svn/20190930/project/jsp/1team"/>
+			<item value="https://402-svn/svn/20190930/study/java"/>
+			<item value="https://402-svn/svn/20190930/project/jsp/2team"/>
+			<item value="https://402-svn/svn/20190930/study/web"/>
+		</list>
+	</section>
+	<section name="CommitWizard">
+		<item key="VWeight1" value="500"/>
+		<item key="VWeight2" value="500"/>
+		<item key="ShowCompare" value="false"/>
+	</section>
+</section>

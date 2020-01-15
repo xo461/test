@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 3 elements to &apos;image&apos;&#x0D;&#x0A;- Original project: &apos;ch01html&apos;&#x0D;&#x0A;- Destination element: &apos;image&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     4.jpg&#x0D;&#x0A;     IG7hgcFe1-oKZ1bMUe6ZyDtsuyt8.jpg&#x0D;&#x0A;     izi.jpg" description="Copy files" element1="WebContent/image/4.jpg" element2="WebContent/image/IG7hgcFe1-oKZ1bMUe6ZyDtsuyt8.jpg" element3="WebContent/image/izi.jpg" files="3" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1577337466712" target="/cafeatte/WebContent/upload/magazine/image" units="0" version="1.0"/>
+</session>

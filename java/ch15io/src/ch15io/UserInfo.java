@@ -1,0 +1,38 @@
+package ch15io;
+
+import java.io.Serializable;
+
+// 직렬화 가능한 클래스로 만들기 위해서 Serializable 인터페이스를 상속받게 만든다. 
+public class UserInfo implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	String name;
+	String pw;
+	int age;
+	
+	
+	// 기본 생성자를 이용해서 사용자의 정보가 없는 경우 기본값이 셋팅되도록 한다. 
+	public UserInfo() {
+		this("Unknown","1111",0);
+		
+	
+	}
+	
+	
+	// 생성 하면서 사용자의 정보를 셋팅하는 생성자
+	public UserInfo(String name, String pw, int age) {
+		this.name = name;
+		this.pw = pw;
+		this.age = age;
+	}
+
+
+	@Override
+	public String toString() {
+		return "UserInfo [name=" + name + ", pw=" + pw + ", age=" + age + "]";
+	}
+	
+	
+
+}

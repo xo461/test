@@ -1,0 +1,158 @@
+package com.webjjang.board.controller;
+
+import java.util.List;
+
+import com.webjjang.board.dto.BoardDTO;
+import com.webjjang.board.service.BoardDeleteService;
+import com.webjjang.board.service.BoardListService;
+import com.webjjang.board.service.BoardUpdateService;
+import com.webjjang.board.service.BoardViewService;
+import com.webjjang.board.service.BoardWriteService;
+import com.webjjang.main.Controller;
+import com.webjjang.util.io.Input;
+import com.webjjang.view.BoardView;
+
+public class BoardController implements Controller {
+	// public 공공의 - main 패키지의 Main 클래스에서 사용한다.
+	@Override
+	public void execute() {
+		// 메인을 무한 반복 처리 - 0을 입력하면 이전 메뉴로 돌아간다(main)
+
+		while (true) {
+			try {
+				// 게시판 메뉴 출력
+				System.out.println("===================================");
+				System.out.println("|    일                반                게                시              판       |");
+				System.out.println("===================================");
+				System.out.printf("1. 리스트%n2. 보기%n3. 쓰기%n4. 수정%n5. 삭제%n6. 이전메뉴%n");
+				System.out.println("===================================");
+				String menu = Input.getStringWithMessage("메뉴를 선택하세요.");
+				// switch 문을 빠져 나간다.
+				// break : switch, for, while 문을 빠져 나갈때 사용한다.
+				// break가 없는 경우는 case에 맞는 값이라서 case 아래로 처리하기 위해 들어오면
+				// case와 상관 없이 처리문을 처리하게 된다.
+				switch (menu) {
+				case "1": // case 값 : 값에는 문자, 문자열, 정수는 가능하나 변수, 실수는 불가능하다.
+					System.out.println("게시판리스트처리");
+					// 객체 생성 : BoardController -> [BoardListService] -> BoardDAO
+					BoardListService boardListService = new BoardListService();
+					// 데이터 가져오기 -> 메서드 호출
+					List<BoardDTO> list = boardListService.service();
+
+					// 가져온 데이터를 출력(객체 생성 -> 메서드 호출)
+					BoardView boardView = new BoardView();
+					boardView.list(list);
+					break;
+
+				case "2":
+					System.out.println("게시판글보기처리");
+					// list를 먼저 실행하고 있는 글 번호를 선택한다.
+					getDTO("볼 글 번호를 입력하세요.");
+					break;
+
+				case "3":
+					System.out.println("게시판글쓰기처리");
+					// 사용자에게 데이터를 받는다. -> dto 객체로 만든다.
+					// 제목, 내용, 작성자
+//					BoardDTO inDto = inputDTO(); // 변수 선언없이 메서드의 리턴값을 이용해 파라메터 바로 넘겨도 됨
+					BoardWriteService boardWriteService = new BoardWriteService();
+					boardWriteService.service(inputDTO());
+					// controller -> [service] -> dao
+					break;
+
+				case "4":
+					System.out.println("게시판글수정처리");
+					// 수정할 글번호를 받는다. -> 글을 가져온다. (BoardViewService) 표시
+					BoardDTO boardDTO = getDTO("수정할 글 번호를 입력하세요.");
+					// -> 가져온 DTO의 데이터를 항목별로 수정한다.
+					changeData(boardDTO);
+					System.out.println(boardDTO);
+					// -> DB에 수정처리를 한다.(service -> dao)
+					BoardUpdateService boardUpdateService = new BoardUpdateService();
+					boardUpdateService.service(boardDTO);
+					break;
+
+				case "5":
+					System.out.println("게시판글삭제처리");
+					// 글 번호에 맞는 DB에 데이터를 삭제 -> delete
+					new BoardDeleteService().service(Input.getIntWithMessageOfSmart("삭제할 글 번호 입력"));
+					break;
+				case "0":
+					System.out.println("이전메뉴로 돌아가기");
+					return;
+				default:
+					System.out.println("잘못된 메뉴값입니다. \n다시 입력하세요."); // println에서 중간에 줄 바꿈은 \n으로 사용. %n은 printf에서 사용
+					break;
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				// 개발자를 위한 코드
+				e.printStackTrace();
+				// 사용자를 위한 코드
+				System.out.println(e.getMessage());
+				System.out.println("게시판을 처리하는 중 오류가 발생되었습니다.");
+				System.out.println("잠시후에 다시 시도해주세요");
+				System.out.println("계속 진행이 안되면 전산담당자(정태환)에게 연락해주세요.");
+			}
+		}
+	}
+
+	// 게시판의 내용을 입력받는 메서드 -> dto 생성 -> 제목, 내용, 작성자 입력받아 리턴
+	public BoardDTO inputDTO() {
+		BoardDTO dto = new BoardDTO();
+		dto.setTitle(Input.getStringWithMessage("제목 : "));
+		dto.setContent(Input.getStringWithMessage("내용 : "));
+		dto.setWriter(Input.getStringWithMessage("작성자 : "));
+
+		return dto;
+	}
+
+	// DB에서 DTO 가져오는 프로그램 작성
+	public BoardDTO getDTO(String msg) throws Exception {
+		// list를 먼저 실행하고 있는 글 번호를 선택한다.
+		int no = Input.getIntWithMessageOfSmart(msg);
+		// 데이터 가져오기
+		BoardViewService boardViewService = new BoardViewService();
+		BoardDTO dto = boardViewService.service(no);
+		// 생성하고 호출
+		BoardView boardView = new BoardView();
+		boardView.view(dto);
+		// view에선 버린다 / update할 땐 리턴해 사용
+		return dto;
+	}
+
+	// 가져온 데이터를 수정하는 메소드
+	public void changeData(BoardDTO dto) {
+		// 입력 데이터가 0이 될때까지 무한 반복
+		while (true) {
+			// 변경할 데이터를 선택
+			// 데이터 입력받는다.
+			System.out.println("변경할 내용 선택");
+			System.out.println("1. 제목, 2. 내용, 3. 작성자 0. 종료");
+			String menu = Input.getStringWithMessage("수정 항목 선택");
+			
+			switch (menu) {
+			case "1":
+				dto.setTitle(Input.getStringWithMessage("제목"));
+				break;
+
+			case "2":
+				dto.setContent(Input.getStringWithMessage("내용"));
+				break;
+			
+			case "3":
+				dto.setWriter(Input.getStringWithMessage("작성자"));
+				break;
+			
+			case "0":
+				return;
+			
+			default:
+				System.out.println("잘못된 항목을 선택하셨습니다.");
+				break;
+			}
+			// 데이터가 수정이 되었으면 출력해서 확인할 수 있도록 제공한다.
+			new BoardView().view(dto);
+		}
+	}
+}

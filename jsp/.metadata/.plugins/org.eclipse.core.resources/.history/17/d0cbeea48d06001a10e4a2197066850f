@@ -1,0 +1,30 @@
+<%@page import="com.webjjang.member.dto.LoginDTO"%>
+<%@page import="com.webjjang.bean.Beans"%>
+<%@page import="com.webjjang.main.Service"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+Service service = Beans.getService("memberLoginService");
+
+// 한글처리 
+request.setCharacterEncoding("utf-8");
+
+// 데이터 받기 
+String id = request.getParameter("id");
+String pw = request.getParameter("pw");
+
+//넘겨줄 데이터 (DTO) 생성하고 데이터 셋팅한다.
+LoginDTO dto = new LoginDTO();
+dto.setId(id);
+dto.setPw(pw);
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인 처리 페이지</title>
+</head>
+<body>
+
+</body>
+</html>

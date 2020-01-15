@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;com.webjjang.util.db&apos; to &apos;project1124/src&apos;&#x0D;&#x0A;- Original project: &apos;webjjangcom_ver2&apos;&#x0D;&#x0A;- Destination element: &apos;project1124/src&apos;&#x0D;&#x0A;- Original element: &apos;webjjangcom_ver2/src/com.webjjang.util.db&apos;" description="Copy package" destination="=project1124/src" element1="/src&lt;com.webjjang.util.db" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1574670505116" version="1.0"/>
+</session>

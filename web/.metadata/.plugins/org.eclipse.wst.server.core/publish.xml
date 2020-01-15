@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<publish-info>
+  <server id="Tomcat v9.0 Server at project112601" path="publish5.dat"/>
+  <server id="Tomcat v9.0 Server at webjjangcom_servlet_ver3" path="publish2.dat"/>
+  <server id="Tomcat v9.0 Server at project1120" path="publish3.dat"/>
+  <server id="Tomcat v9.0 Server at cafe_atte" path="publish4.dat"/>
+  <server id="Tomcat v9.0 Server at localhost" path="publish0.dat"/>
+  <server id="Tomcat v9.0 Server at webjjangcom_ver2" path="publish1.dat"/>
+  <server id="Tomcat v9.0 Server at javatest" path="publish6.dat"/>
+</publish-info>

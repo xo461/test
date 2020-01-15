@@ -1,0 +1,37 @@
+package ch15io;
+
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+
+public class ReadSerialEx2 {
+
+	@SuppressWarnings("unchecked")
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		try {
+			
+			// 읽어 들여올 파일 이름
+			String fileName = "UserInfo.ser";
+			// 읽어올 파일 객체
+			FileInputStream fis = new FileInputStream(fileName);
+			// 데이터가 많은 경우 버퍼를 이용하는 객체
+			BufferedInputStream bis = new BufferedInputStream(fis);
+			
+			//버퍼드 되어진 파일 객체에서 객체를 읽어올  객체를 선언 한다. 
+			ObjectInputStream in = new ObjectInputStream(bis);
+		
+			//파일로 부터 ArryList를 읽어온다.
+			ArrayList<UserInfo>list 
+			= (ArrayList<UserInfo>)in.readObject();
+			System.out.println(list);
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+	}
+
+}

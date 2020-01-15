@@ -1,0 +1,86 @@
+package com.webjjang.image.controller;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.webjjang.image.dto.ImageDTO;
+import com.webjjang.image.service.ImageListService;
+import com.webjjang.image.service.ImageViewService;
+import com.webjjang.main.Controller;
+import com.webjjang.view.ImageView;
+
+public class ImageController implements Controller{
+	//Main.scn.nextLine(); 이러한 형태로 외부에서 호출 가능.
+	public static Scanner scn = new Scanner(System.in);
+	//public 공공의 - main 패키지의 Main 클래스에서 사용한다.
+	@Override
+	public void execute() {
+
+		try {
+			//공지사항 처리를 무한 반복 - 0을 입력하면 이전 메뉴로 돌아간다(main)
+			while(true) {
+				//공지사항 메뉴 출력
+				System.out.println("===================================");
+				System.out.println("===이           미            지            게            시            판===");
+				System.out.println("===================================");
+				System.out.printf("%s.썸네일 리스트 %s.보기  %s.등록%n", "1", "2", "3");
+				System.out.printf("%s.수정  %s.삭제  %s.이전메뉴%n", "4", "5", "0");
+				
+				System.out.println("메뉴의 번호를 입력하세요");
+				String menu = scn.nextLine();
+				//switch 문을 빠져 나간다.
+				//break : switch, for, while 문을 빠져 나갈때 사용한다.
+				//break가 없는 경우는 case에 맞는 값이라서 case 아래로 처리하기 위해 들어오면
+				//case와 상관 없이 처리문을 처리하게 된다.
+				switch (menu) {
+				case "1": //case 값 : 값에는 문자, 문자열, 정수는 가능하나 변수, 실수는 불가능하다.
+					System.out.println("이미지 썸네일 보기 처리");
+					//객체 생성 : ImageController -> [ImageListService] -> ImageDAO
+					ImageListService imageListService = new ImageListService();
+					List<ImageDTO> list = imageListService.service();
+					ImageView imageView = new ImageView();
+					imageView.list(list);
+					break;
+				case "2":
+					System.out.println("이미지 보기 처리");
+					System.out.println("보기줄 글 번호를 입력하세요");
+					int no = Integer.parseInt(scn.nextLine());
+					ImageViewService imageViewService = new ImageViewService();
+					ImageDTO dto = imageViewService.service(no);
+					ImageView imageView2 = new ImageView();
+					imageView2.view(dto);
+					break;
+				case "3":
+					System.out.println("이미지 등록 처리");
+					ImageDTO imageDTO = new ImageDTO();
+					System.out.println("제목을 입력하세요");
+					imageDTO.setTitle(scn.nextLine());
+					System.out.println("내용을 입력하세요");
+					imageDTO.setContent(scn.nextLine());
+					System.out.println("id를 입력하세요");
+					imageDTO.setId(scn.nextLine());
+					System.out.println("파일을 첨부하세요");
+					imageDTO.setFileName(scn.nextLine());
+					System.out.println(imageDTO);
+					break;
+				case "4":
+					System.out.println("이미지 수정 처리");
+					break;
+				case "5":
+					System.out.println("이미지 삭제 처리");
+					break;
+				case "0":
+					System.out.println("이전메뉴로 돌아가기");
+					//scn.close();
+					return; //호출한 곳으로 돌아가라는 명령어 : return : SwitchMain.main()호출
+				default:
+					System.out.println("잘못된 메뉴값입니다. \n다시 입력하세요.");
+					break;
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

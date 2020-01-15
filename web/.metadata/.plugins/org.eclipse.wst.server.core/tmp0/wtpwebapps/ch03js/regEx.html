@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JS정규 표현식을 이용한 데이터 검사</title>
+<script type="text/javascript">
+function sendData() {
+	alert("sendData()");
+	var idReg = /^[A-Za-z][A-Za-z0-9]{3,19}$/
+	id=document.getElementById("id");
+	vid = id.value;
+	alert("입력한 아이디:"+vid);
+	if(!idReg.test(vid)){
+		alert("아이디는 4~20사이에 글자입력\n 첫글자는 영문자");
+		id.focus();
+		return false;
+	}
+		alert("정규표현식에 맞음");
+}
+</script>
+</head>
+<body>
+<form action="#" method="post" onsubmit="return sendData();">
+아이디: <input id="id"/><br/>
+<button>로그인</button>
+</form>
+
+</body>
+</html>

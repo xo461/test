@@ -1,0 +1,73 @@
+package com.webjjang.member.controller;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.webjjang.member.dto.MemberDTO;
+import com.webjjang.member.service.MemberListService;
+import com.webjjang.member.service.MemberViewService;
+import com.webjjang.view.MemberView;
+
+public class MemberController {
+	
+	public static Scanner scanner = new Scanner(System.in);
+	
+	public void execute() {
+		
+		System.out.println("=====================");
+		System.out.println("==   회  원  관  리    게  시  판  ==");
+		System.out.println("=====================");
+		
+		while(true) {
+			try {
+				System.out.println();
+				System.out.println("1.리스트 2.보기 3.등록");
+				System.out.println("4.수정 5.삭제 0.이전메뉴");
+				System.out.println("메뉴의 번호를 입력하세요.");
+				String menu = scanner.nextLine();
+				
+				switch (menu) {
+				case "1":
+					System.out.println("회원관리 리스트 처리");
+					MemberListService memberListService
+					= new MemberListService();
+					List<MemberDTO> list = memberListService.service();
+					MemberView memberView = new MemberView();
+					memberView.list(list);
+					break;
+				case "2":
+					System.out.println("회원관리 보기 처리");
+					System.out.println("회원 선택");
+					String name =(scanner.nextLine());
+					MemberViewService memberViewService
+					= new MemberViewService();
+					MemberDTO dto = memberViewService.service(name);
+					MemberView memberView2 = new MemberView();
+					memberView2.view(dto);
+					break;
+				case "3":
+					System.out.println("회원관리 등록 처리");
+					break;
+				case "4":
+					System.out.println("회원관리 수정 처리");
+					break;
+				case "5":
+					System.out.println("회원관리 삭제 처리");
+					break;
+				case "0":
+					return;
+				default:
+					System.out.println("잘못된 메뉴를 입력하셨습니다. \n다시 입력해 주세요.");
+					break;
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+				System.out.println("게시판을 처리하는 중 오류가 발생되었습니다.");
+				System.out.println("잠시 후에 다시 시도해 주세요.");
+				System.out.println("계속 진행이 안되면 전산담당자(정태환)에게 연락해 주세요.");
+			}
+		}
+	}
+
+}

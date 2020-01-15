@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;ch15io.UserInfor.java&apos; to &apos;UserInfo.java&apos;&#x0D;&#x0A;- Original project: &apos;ch15io&apos;&#x0D;&#x0A;- Original element: &apos;ch15io.UserInfor.java&apos;&#x0D;&#x0A;- Renamed element: &apos;ch15io.UserInfo.java&apos;" description="Rename compilation unit &apos;UserInfor.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;ch15io{UserInfor.java" name="UserInfo.java" references="false" stamp="1573442265495" version="1.0"/>
+</session>

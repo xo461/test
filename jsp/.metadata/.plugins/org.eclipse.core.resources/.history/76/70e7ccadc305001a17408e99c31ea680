@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%
+// JoinService 생성된 객체를 저장하는 변수 
+
+
+// 한글처리 
+request.setCharacterEncoding("utf-8");
+
+//넘어오는 데이터를 받는다. 조인폼에 name에 써진것 쓴다. 
+String id = request.getParameter("id");
+String pw = request.getParameter("pw");
+String name = request.getParameter("name");
+String gender = request.getParameter("gender");
+String birth = request.getParameter("birth");
+String email = request.getParameter("email");
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+1577152274157	Rename type 'magazineDTO'
+1577156782140	Rename package 'com.webjjang.board.service'
+1577156789048	Delete element
+1577156790743	Delete element
+1577156792401	Delete element
+1577156795259	Delete element
+1577156884025	Rename type 'BoardDeleteService'
+1577156898752	Rename type 'BoardWriteService'
+1577156909821	Rename type 'BoardViewService'
+1577156922694	Rename type 'BoardUpdateService'
+1577156935784	Rename type 'BoardListService'
+1577169648792	Delete elements
+1577169797676	Copy package
+1577169840108	Delete element
+1577169978312	Delete elements
+1577170190400	Delete element
+1577170236341	Rename package 'com.webjjang.magazine.service'
+1577170247578	Rename package 'com.webjjang.qna.controller'
+1577170260530	Rename package 'com.webjjang.qna.service'
+1577411171670	Copy compilation unit

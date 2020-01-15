@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;ch04condition.FlowEx12&apos; to &apos;FlowExFor12&apos;&#x0D;&#x0A;- Original project: &apos;ch04condition&apos;&#x0D;&#x0A;- Original element: &apos;ch04condition.FlowEx12&apos;&#x0D;&#x0A;- Renamed element: &apos;ch04condition.FlowExFor12&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;FlowEx12&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;ch04condition{FlowEx12.java[FlowEx12" matchStrategy="1" name="FlowExFor12" qualified="false" references="true" similarDeclarations="false" stamp="1571014224634" textual="false" version="1.0"/>
+</session>

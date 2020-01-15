@@ -1,0 +1,38 @@
+package ch15io;
+
+import java.io.BufferedOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
+public class OutSerialEx1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		try {
+			//파일 출력을 위해서 파일명
+			String fileName = "UserInfo.ser";
+			// 파일 저장 객체
+			FileOutputStream fos = new FileOutputStream(fileName);
+			//데이터가 많은 경우 속도 차이 때문에 버퍼를 사용하도록한 객체
+			BufferedOutputStream bos = new BufferedOutputStream(fos);
+			
+			//serialize된 객체를 저장하기 위한 객체
+			ObjectOutputStream out = new ObjectOutputStream(bos);
+			
+			ArrayList<UserInfo> list = new ArrayList<UserInfo>();
+			list.add(new UserInfo("javaMan","1234",30));
+			list.add(new UserInfo("javaWoMan","4321",26));
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}

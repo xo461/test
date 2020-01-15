@@ -1,0 +1,87 @@
+package com.webjjang.bean;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.Servlet;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+import com.webjjang.main.Service;
+import com.webjjang.notice.dao.NoticeDAO;
+import com.webjjang.notice.service.NoticeDeleteService;
+import com.webjjang.notice.service.NoticeListService;
+import com.webjjang.notice.service.NoticeUpdateService;
+import com.webjjang.notice.service.NoticeViewService;
+import com.webjjang.notice.service.NoticeWriteService;
+/**
+ * Servlet implementation class Beans
+ */
+@WebServlet(urlPatterns = "/init",loadOnStartup = 1)
+
+public class Beans extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	
+	// 각각의 객체를 저장할 map 객체 선언하고 생성해 놓는다. 
+
+		private static Map<String, Service> service = new HashMap<>(); 
+	 
+		private static Map<String, Object> dao = new HashMap<>(); 
+		
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Beans() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see Servlet#init(ServletConfig)
+	 * Java에서 사용하던 Controller를 URL을 이용한 JSP나 Servlet이 담당하므로 사라진다.
+	 */
+	public void init(ServletConfig config) throws ServletException {
+		// TODO Auto-generated method stub
+		// init 메서드 -> 초기화 메서드 
+		// 클래스가 시작될때 딱한번만 실행된다. -> static 블록 호출 당한다.   
+		System.out.println("Beans.init() = static()블록");
+		System.out.println("객체 초기화 중.....");
+		//***********공지사항**********
+		//dao 생성저장
+		dao.put("noticeDAO", new NoticeDAO());
+		//service 생성 저장
+		service.put("noticeListService", 
+				new NoticeListService((NoticeDAO) dao.get("noticeDAO")));
+		service.put("noticeViewService", 
+				new NoticeViewService((NoticeDAO) dao.get("noticeDAO")));
+		service.put("noticeWriteService", 
+				new NoticeWriteService((NoticeDAO) dao.get("noticeDAO")));
+		service.put("noticeUpdateService", 
+				new NoticeUpdateService((NoticeDAO) dao.get("noticeDAO")));
+		service.put("noticeDeleteService", 
+				new NoticeDeleteService((NoticeDAO) dao.get("noticeDAO")));
+	
+		//*********** 회원가입 **********
+				//dao 생성저장
+		
+		
+		
+		System.out.println("객체 초기화 완료 .....");
+		
+	}//end of init()
+	
+	//Controller 를 받아내는 메서드 작성
+	public static Service getService(String name) {
+		return service.get(name);
+	}
+}// end of Beans class
+
+		
+		
+		
+		
+		
+		

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>공지를 위한 div</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style type="text/css">
+#noticeDiv{
+	width:300px;
+	height: 420px;
+	background: orange;
+	position: absolute;
+	top: 200px;
+	left:400px;
+	border: 2px solid #aaa;
+}
+
+</style>
+<script type="text/javascript">
+$(function(){
+	//이벤트처리 
+	//공지 보기 버튼 이벤트 
+	$("#noticeViewBtn").click(function(){
+// 		alert(공지보기 버튼 클릭);
+		$("#noticeDiv").show();
+	});
+	//공지 닫기 버튼이벤트 
+	$("#closeDivBtn").click(function(){		
+		$("#noticeDiv").hide();
+	});
+});
+</script>
+
+</head>
+<body>
+<button id="noticeViewBtn">공지 보기</button>
+<p>
+매경닷컴 MK스포츠(日 도쿄) 안준철 기자
+
+믿음의 야구는 결과적으로 실패했다. 대한민국 4번타자 박병호(33·키움)는 눈물을 감추지 못했다.
+
+김경문 감독이 이끄는 대한민국 야구대표팀은 17일 오후 7시 일본 도쿄돔에서 열린 2019 세계야구소프트볼연맹(WBSC) 프리미어12 일본과 결승전에서 3-5로 패했다. 이날 패배로 한국은 프리미어12 준우승에 그쳤다. 대회 2연패도 무산됐다. 아쉬움이 남는 마무리였다.
+
+그리고 박병호는 고개를 숙였다. 이번 대회 내내 타격감이 좋지 않았던 박병호다. 대회 최종 성적도 타율 0.179(28타수 5안타)에 2타점이다. 홈런은 단 한 개도 없다. 박병호답지 못한 기록이다.
+
+</p>
+
+<!-- 공지 창  -->
+<div id="noticeDiv">
+ <h2>&lt;공지&gt;</h2>
+ <p>
+ 12월25일은 공휴일 이므로 수업이 없음.
+ </p>
+ <button id="closeDivBtn">닫기 </button>
+</div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+package com.webjjang.message.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.webjjang.message.dto.MessageDTO;
+
+public class MessageDAO {
+
+	String url = "jdbc:oracle:thin:@402-oracle:1521:orcl";
+	String id = "c##dogfoot";
+	String pw = "dogfoot";
+
+	// 오라클 드라이버
+	String driver = "oracle.jdbc.driver.OracleDriver";
+
+	public List<MessageDTO> list() throws Exception {
+		List<MessageDTO> list = null;
+
+		// 데이터 가져오는 처리문
+		// 1. 드라이버 확인
+		Class.forName(driver);
+		// 2. 연결객체
+		Connection con = DriverManager.getConnection(url, id, pw);
+		// 3. 실행할 쿼리문 작성
+		String sql = " SELECT no, content, sender, TO_CHAR(sendDate, 'yy-mm-dd') sendDate, accepter, TO_CHAR(acceptDate, 'yy-mm-dd') acceptDate  FROM message ORDER BY no DESC ";
+		System.out.println("MessageDAO.list().sql : " + sql);
+		// 4. 실행객체 가져오기 / 데이터 셋팅
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		// 5. 실행
+		ResultSet rs = pstmt.executeQuery();
+		if(rs!=null) {
+			while(rs.next()) {
+				if (list == null)
+					list = new ArrayList<MessageDTO>();
+				MessageDTO dto = new MessageDTO();
+				dto.setNo(rs.getInt("no"));
+				dto.setContent(rs.getString("content"));
+				dto.setSender(rs.getString("sender"));
+				dto.setSendDate(rs.getString("sendDate"));
+				dto.setAccepter(rs.getString("accepter"));
+				dto.setAcceptDate(rs.getString("acceptDate"));
+				list.add(dto);
+			}
+			con.close();
+			pstmt.close();
+			rs.close();
+		}
+		System.out.println("MessageDAO.list().list : " + list);
+		return list;
+	}
+	
+	public MessageDTO view(int no) throws Exception {
+
+		System.out.println("MessageDAO.view().no : " + no);
+
+		// 가져온 결과가 저장되어 지는 변수 -> 리턴해야 하므로 리턴 타입과 같아야 함
+		MessageDTO dto = null;
+
+		// 데이터 가져오는 처리문
+		// 1. 드라이버 확인
+		Class.forName(driver);
+		// 2. 연결객체
+		Connection con = DriverManager.getConnection(url, id, pw);
+		// 3. 실행할 쿼리문 작성
+		// 쿼리 문 중에서 ?는 값을 대체 시키는 대체 문자에 해당함.
+		String sql = " SELECT no, content, sender, TO_CHAR(sendDate, 'yy-mm-dd') sendDate, accepter, TO_CHAR(acceptDate, 'yy-mm-dd') acceptDate  FROM message WHERE no = ? ";
+		System.out.println("MessageDAO.list().sql : " + sql);
+		// 4. 실행객체 가져오기 / 데이터 셋팅
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		// pstmt.setInt(?의 위치, 대체할 값)
+		pstmt.setInt(1, no);
+		// 5. 실행
+		ResultSet rs = pstmt.executeQuery();
+		// 6. 표시 / 저장
+		if (rs != null && rs.next()) { // rs.next() -> 다음 데이터로 넘어가면서 데이터가 있으면 true, 없으면 false를 리턴
+			// 게시판 하나의 데이터를 담는 객체 생성 -> BoardDTO
+			dto = new MessageDTO();
+			// 데이터를 dto에 담는다. rs에서 꺼내어 dto 에 담는다.
+			dto.setNo(rs.getInt("no"));
+			dto.setContent(rs.getString("content"));
+			dto.setSender(rs.getString("sender"));
+			dto.setSendDate(rs.getString("sendDate"));
+			dto.setAccepter(rs.getString("accepter"));
+			dto.setAcceptDate(rs.getString("acceptDate"));
+			// 리스트 데이터가 여러개이므로 데이터를 담은 dto를 list 에 추가시킨다.
+
+		} // end of if(rs != null && rs.next())
+			// 7. 닫기
+		con.close();
+		pstmt.close();
+		rs.close();
+
+		System.out.println("BoardDAO.list().dto: " + dto);
+		return dto;
+		// end of view()
+	}
+}

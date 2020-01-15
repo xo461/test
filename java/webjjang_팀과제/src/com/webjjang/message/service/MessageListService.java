@@ -1,0 +1,18 @@
+package com.webjjang.message.service;
+
+import java.util.List;
+
+import com.webjjang.message.dao.MessageDAO;
+import com.webjjang.message.dto.MessageDTO;
+
+public class MessageListService {
+	
+	public List<MessageDTO> service(int no) throws Exception {
+		
+		System.out.println("MessageListService.List.service()");
+		MessageDAO dao = new MessageDAO();
+		return dao.list(no);
+		
+	}
+
+}

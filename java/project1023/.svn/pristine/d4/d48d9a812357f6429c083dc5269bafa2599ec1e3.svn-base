@@ -1,0 +1,56 @@
+package com.webjjang.message.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.webjjang.message.dto.MessageDTO;
+
+public class MessageDAO {
+
+	String url = "jdbc:oracle:thin:@402-oracle:1521:orcl";
+	String id = "c##java01";
+	String pw = "java01";
+
+	// 오라클 드라이버
+	String driver = "oracle.jdbc.driver.OracleDriver";
+
+	public List<MessageDTO> list() throws Exception {
+		List<MessageDTO> list = null;
+
+		// 데이터 가져오는 처리문
+		// 1. 드라이버 확인
+		Class.forName(driver);
+		// 2. 연결객체
+		Connection con = DriverManager.getConnection(url, id, pw);
+		// 3. 실행할 쿼리문 작성
+		String sql = " SELECT no, content, sender, TO_CHAR(sendDate, 'yy-mm-dd') sendDate, accepter, TO_CHAR(acceptDate, 'yy-mm-dd') acceptDate  FROM board ORDER BY no DESC ";
+		System.out.println("MessageDAO.list().sql : " + sql);
+		// 4. 실행객체 가져오기 / 데이터 셋팅
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		// 5. 실행
+		ResultSet rs = pstmt.executeQuery();
+		if(rs!=null) {
+			while(rs.next()) {
+				if (list == null)
+					list = new ArrayList<MessageDTO>();
+				MessageDTO dto = new MessageDTO();
+				dto.setNo(rs.getInt("no"));
+				dto.setContent(rs.getString("content"));
+				dto.setSender(rs.getString("sender"));
+				dto.setSendDate(rs.getString("sendDate"));
+				dto.setAccepter(rs.getString("accepter"));
+				dto.setAcceptDate(rs.getString("acceptDate"));
+				list.add(dto);
+			}
+			con.close();
+			pstmt.close();
+			rs.close();
+		}
+		System.out.println("MessageDAO.list().list : " + list);
+		return list;
+	}
+}

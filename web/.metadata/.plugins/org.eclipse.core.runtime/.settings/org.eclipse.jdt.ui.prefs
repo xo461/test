@@ -1,0 +1,19 @@
+content_assist_disabled_computers=org.eclipse.jdt.ui.textProposalCategory\u0000org.eclipse.jdt.ui.javaAllProposalCategory\u0000org.eclipse.jdt.ui.javaTypeProposalCategory\u0000org.eclipse.jdt.ui.javaNoTypeProposalCategory\u0000org.eclipse.jdt.ui.javaChainProposalCategory\u0000
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="com.webjjang.qna.dto.QnaDTO"><rhs name\="com.webjjang.qna.dto.QnaDTO"/></lhs><lhs name\="java.util.Collection"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.lang.Iterable"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.util.List"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="com.webjjang.board.dto.BoardDTO"><rhs name\="com.webjjang.board.dto.BoardDTO"/></lhs><lhs name\="java.util.Map"><rhs name\="java.util.HashMap"/></lhs><lhs name\="com.webjjang.dto.BoardDTO"><rhs name\="com.webjjang.dto.BoardDTO"/></lhs><lhs name\="com.webjjang.main.Service"><rhs name\="com.webjjang.board.Service.BoardListService"/><rhs name\="com.webjjang.board.service.BoardListService"/><rhs name\="com.webjjang.member.service.MemberIdCheckService"/><rhs name\="com.webjjang.board.service.BoardReplyListService"/><rhs name\="com.webjjang.board.service.BoardReplyUpdateService"/><rhs name\="com.webjjang.board.service.BoardReplyDeleteService"/></lhs><lhs name\="com.webjjang.board.dao.BoardDAO"><rhs name\="com.webjjang.board.dao.BoardDAO"/></lhs><lhs name\="com.webjjang.dao.BoardDAO"><rhs name\="com.webjjang.dao.BoardDAO"/></lhs><lhs name\="com.webjjang.main.Controller"><rhs name\="com.webjjang.qna.controller.QnaController"/><rhs name\="com.webjjang.notice.controller.NoticeController"/><rhs name\="com.webjjang.member.controller.MemberController"/><rhs name\="com.webjjang.main.AjaxController"/><rhs name\="com.webjjang.image.controller.ImageController"/><rhs name\="com.webjjang.board.controller.BoardController"/><rhs name\="com.webjjang.main.controller.MainController"/></lhs><lhs name\="com.webjjang.util.page.PageObject"><rhs name\="com.webjjang.util.page.PageObject"/></lhs><lhs name\="com.webjjang.main.AjaxController"><rhs name\="com.webjjang.main.AjaxController"/></lhs><lhs name\="com.cafeatte.main.Service"><rhs name\="com.cafeatte.qna.service.QnaAnswerService"/></lhs><lhs name\="com.cafeatte.qna.dto.QnaDTO"><rhs name\="com.cafeatte.qna.dto.QnaDTO"/></lhs></history>
+content_assist_number_of_computers=22
+content_assist_proposals_background=255,255,255
+content_assist_proposals_foreground=0,0,0
+eclipse.preferences.version=1
+org.eclipse.jdt.internal.ui.navigator.layout=2
+org.eclipse.jdt.internal.ui.navigator.librariesnode=true
+org.eclipse.jdt.ui.formatterprofiles.version=17
+org.eclipse.jdt.ui.visibility.order=B,V,R,D,
+outlinesortoption=T,SF,SI,SM,F,I,C,M,
+semanticHighlighting.class.bold=true
+semanticHighlighting.class.enabled=true
+semanticHighlighting.interface.bold=true
+semanticHighlighting.interface.color=128,0,255
+semanticHighlighting.interface.enabled=true
+spelling_locale_initialized=true
+useAnnotationsPrefPage=true
+useQuickDiffPrefPage=true

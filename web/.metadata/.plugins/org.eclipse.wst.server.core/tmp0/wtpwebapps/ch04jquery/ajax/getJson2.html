@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>getJson2</title>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+$(function () {
+// 	jQuery.getJSON(url, callback function(data, status, xhr) {})
+	$.getJSON("boards.json",function(data){
+		alert(data);
+		alert(data.title);
+		var items = [];
+		//data의 각 항목별 처리 : data가 json형식이므로 항목을 k:v로 구성되어 있다. 
+		//function()가 항목에 따른 반복문이 된다.data의 한개의 항목(k:v)을 가져다가 function의
+		//파라메터로 간다.function(k,v)
+		//$.each = foreach문
+		$.each(data,function(key,val){
+			// 배열안에 문자열을 만들고 만들어진 문자열을 집어 넣는다. push()
+			// 자바의 join과 같은것.
+			items.push("<tr id='"+ key +"'><td>" + val.no + "</td>");
+			items.push("<td>" + val.title + "</td>");
+			items.push("<td>" + val.writer + "</td>");
+			items.push("<td>" + val.writeDate + "</td>");
+			items.push("<td>" + val.hit + "</td></tr>");
+		});
+		// 배열 출력
+		alert(items);
+		// 배열 (li 태그가 있는 )을 한개의 문자열로 만든다. 데이터들의 사이의 구분자는 없는 것으로 한다. ("")
+		alert(items.join(""));
+		// jquery(만들어질 태그, {태그의 구성}) -> html element가 생성된다. 
+		// .appendTo("body") -> body element에 뒤에 추가 시킨다. 
+		$("<table/>",{
+			"class":"my-new-list",
+			html:items.join("")
+		}).appendTo("body");
+	});
+});
+</script>
+</head>
+<body>
+<h2>getJSON2</h2>
+
+</body>
+</html>

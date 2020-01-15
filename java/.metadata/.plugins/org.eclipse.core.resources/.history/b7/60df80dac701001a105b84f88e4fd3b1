@@ -1,0 +1,110 @@
+/*
+ * main
+ * 각각의 서비스가 실행되는 시간을 체크하는 처리 작성. 
+ */
+package main;
+
+import java.util.List;
+
+import com.webjjang.util.io.Input;
+
+import bean.Beans;
+import dto.DTO;
+
+public class OldMain {
+
+	public static void main(String[] args) throws ClassNotFoundException {
+		// TODO Auto-generated method stub
+		
+		// 프로그램을 돌리기 전에 모든 객체를 생성해야한다.
+		Class.forName("bean.Beans");
+
+		System.out.println("환영합니다.");
+		
+		while(true) {
+			// 메뉴 출력
+			System.out.println("[main]--------------------------");
+			System.out.println("1.list 2.view 3. write");
+			System.out.println("4.update 5.delete 0.exit");
+			// 메뉴 입력
+			String menu = Input.getStringWithMessage
+					("메뉴입력하세요.\n명령어를 입력하세요.(예:list)");
+			//switch 문 공통 변수 사용
+			int no = 0;
+			// 메뉴 처리 
+			long startTime = 0;
+			long endTime = 0;
+			switch (menu) {
+			case "list":
+				//시작 시간 저장 
+				
+				List<DTO> list 
+				= (List<DTO>) execute(Beans.getService(menu), null);				
+				System.out.println(list);
+				break;
+			case "view":
+				no = 1;
+			       DTO dto
+				= (DTO) execute(Beans.getService(menu), 1,1);				
+				System.out.println(dto);
+				break;
+			case "write":
+				execute(Beans.getService(menu), new DTO());
+				break;
+			case "update":
+				execute(Beans.getService(menu), new DTO());
+				break;
+			case "delete":
+				no = 1;
+				startTime = System.nanoTime();
+				Beans.getService(menu).service(null);
+				endTime = System.nanoTime();
+				System.out.println(menu + "의 작업시간 :" + (endTime-startTime));
+				break;
+			case "exit":
+				
+				System.out.println("Bye~~~~~~~~~~~");
+				System.exit(0);
+				break;
+
+			default:
+				System.out.println("잘못된 메뉴를 입력하셨습니다.");
+				break;
+			}// end of switch
+		}// end of while
+		
+	}// end of main
+	//서비스를 실행할 메서드 
+	private static Object execute(Service service,Object...objs){
+		System.out.println("Main.timeCheck(): service 실행 ");
+		return timeCheck(service, objs);
+	}
+	
+// 실행 시간을 체크하는 메서드
+	private static Object timeCheck(Service service, Object[] objs) {
+		System.out.println("Main.timeCheck(): service 실행 시간 처리");
+		long startTime = System.nanoTime();
+//		Object result = service.service(objs);
+		Object result = authCheck(service, objs);
+		long endTime = System.nanoTime();
+		System.out.println("작업시간 :" + (endTime-startTime));
+		return result;
+	}
+	// 권한을 체크하는 메서드
+	private static Object authCheck(Service service, Object[] objs) {
+		System.out.println("Main.timeCheck(): service  권한 처리");
+		//권한 처리를 한다.
+		Object result = service.service(objs);
+		return result;
+	}
+}// end of class
+
+
+
+
+
+
+
+
+
+

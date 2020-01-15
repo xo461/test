@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.webjjang.member.dto.MemberDTO"/>
+<fullyQualifiedTypeName name="com.webjjang.member.service.MemberJoinService"/>
+<fullyQualifiedTypeName name="com.webjjang.member.dao.MemberDAO"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="com.webjjang.board.service.BoardListService"/>
+<fullyQualifiedTypeName name="com.webjjang.board.service.BoardWriteService"/>
+<fullyQualifiedTypeName name="com.webjjang.board.service.BoardViewService"/>
+<fullyQualifiedTypeName name="com.webjjang.board.service.BoardUpdateService"/>
+<fullyQualifiedTypeName name="com.webjjang.board.dto.BoardDTO"/>
+<fullyQualifiedTypeName name="com.webjjang.util.db.DBUtil"/>
+<fullyQualifiedTypeName name="com.webjjang.main.Service"/>
+<fullyQualifiedTypeName name="com.webjjang.board.service.BoardDeleteService"/>
+<fullyQualifiedTypeName name="com.webjjang.board.dao.BoardDAO"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="com.webjjang.qna.service.QnaListService"/>
+<fullyQualifiedTypeName name="com.webjjang.member.dto.LoginDTO"/>
+<fullyQualifiedTypeName name="com.webjjang.member.service.MemberLoginService"/>
+<fullyQualifiedTypeName name="com.webjjang.qna.service.QnaWriteService"/>
+<fullyQualifiedTypeName name="com.webjjang.qna.dao.QnaDAO"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="com.webjjang.qna.dto.QnaDTO"/>
+</qualifiedTypeNameHistroy>

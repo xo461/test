@@ -1,0 +1,67 @@
+package main;
+
+import java.util.List;
+
+import com.webjjang.util.io.Input;
+
+import bean.Beans;
+import dto.DTO;
+
+public class OldMain {
+
+	public static void main(String[] args) throws ClassNotFoundException {
+		// TODO Auto-generated method stub
+		
+		// 프로그램을 돌리기 전에 모든 객체를 생성해야한다.
+		Class.forName("bean.Beans");
+
+		System.out.println("환영합니다.");
+		
+		while(true) {
+			// 메뉴 출력
+			System.out.println("[main]--------------------------");
+			System.out.println("1.list 2.view 3. write");
+			System.out.println("4.update 5.delete 0.exit");
+			// 메뉴 입력
+			String menu = Input.getStringWithMessage
+					("메뉴입력하세요.\n명령어를 입력하세요.(예:list)");
+			//switch 문 공통 변수 사용
+			int no = 0;
+			// 메뉴 처리 
+			switch (menu) {
+			case "list":
+				List<DTO> list 
+				= (List<DTO>)Beans.getService(menu).service(null);
+				System.out.println(list);
+				break;
+			case "view":
+				no = 1;
+				DTO dto 
+				= (DTO)(Beans.getService(menu).service(no,1));
+				System.out.println(dto);
+				break;
+			case "write":
+				Beans.getService(menu).service(new DTO());
+				break;
+			case "update":
+				Beans.getService(menu).service(new DTO());
+				break;
+			case "delete":
+				no = 1;
+				Beans.getService(menu).service(null);
+				break;
+			case "exit":
+				
+				System.out.println("Bye~~~~~~~~~~~");
+				System.exit(0);
+				break;
+
+			default:
+				System.out.println("잘못된 메뉴를 입력하셨습니다.");
+				break;
+			}
+		}
+		
+	}
+
+}

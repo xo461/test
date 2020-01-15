@@ -1,0 +1,32 @@
+package com.webjjang.view;
+
+import java.util.List;
+
+import com.webjjang.board.dto.BoardDTO;
+
+public class BoardView {
+
+	// list 화면에 출력
+	public void list(List<BoardDTO> list) {
+		// 타이틀 출력
+		System.out.println("==============");
+		System.out.println("====게시판 리스트====");
+		System.out.println("==============");
+		System.out.println("|   번호   |   제목   |   작성자   |  작성일   |  조회수   |");
+
+		// list 에 여러개의 데이터가 들어있으므로 각각의 데이터에 대해서 출력 -> forEach
+		for (BoardDTO dto : list) {
+			System.out.printf("|   %d   |   %s   |   %s   |   %s   |   %d   |%n", dto.getNo(), dto.getTitle(),
+					dto.getWriter(), dto.getWriteDate(), dto.getHit());
+		}
+	}
+	
+	public void view(BoardDTO dto) {
+		System.out.println("==============");
+		System.out.printf("%d | %s %n", dto.getNo(), dto.getTitle());
+		System.out.println("==============");
+		System.out.println("   내용   |   작성자   |  작성일   |  조회수   |");
+		System.out.printf("   %s   |   %s   |   %s   |   %d   |%n", dto.getContent(),
+				dto.getWriter(), dto.getWriteDate(), dto.getHit());
+	}
+}

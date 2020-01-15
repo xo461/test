@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%
+	//사용자컴퓨터의 저장되어 있는 캐시 파일을 사용하지 않도록 설정 -> 소스가 자주 변경이 되는 경우만 사용 
+	response.setHeader("Cashe-Control","no-cache"); 
+	//페이지 이동 
+	response.sendRedirect("url?k=v");
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>response 객체</title>
+</head>
+<body>
+변경되는 대로 바로 적용시키기 : header(Cache-Control) -> no-cache 1<br/>
+변경되는 대로 바로 적용시키기 : &lt;F5&gt; 키대신에 &lt;Ctrl&gt;-&lt;F5&gt; <br/>
+</body>
+</html>

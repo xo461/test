@@ -1,0 +1,14 @@
+package ch15fileCopy;
+
+import java.io.FileInputStream;
+
+public class FileCopy2_15_6 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		FileInputStream fis = new FileInputStream(file)
+	}
+
+}

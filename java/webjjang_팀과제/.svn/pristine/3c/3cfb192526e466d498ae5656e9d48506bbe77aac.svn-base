@@ -1,0 +1,202 @@
+package com.webjjang.qna.dao.QnaController;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.webjjang.qna.dao.QnaView.QnaView;
+import com.webjjang.qna.dto.QnaDTO.QnaDTO;
+import com.webjjang.qna.service.Service.QnaAnswerService;
+import com.webjjang.qna.service.Service.QnaDeleteService;
+import com.webjjang.qna.service.Service.QnaListService;
+import com.webjjang.qna.service.Service.QnaUpdateService;
+import com.webjjang.qna.service.Service.QnaViewService;
+import com.webjjang.qna.service.Service.QnaWriteService;
+import com.webjjang.util.io.Input;
+
+public class QnaController implements Controller {
+
+	public static Scanner scanner = new Scanner(System.in);
+	
+	public void execute() {
+		 System.out.println("============================");
+		 System.out.println("============================");
+		 System.out.println("========== 질  문  답  변  =========");
+		 System.out.println("============================");
+		 System.out.println("============================");
+		 
+		 while (true) {
+			 try {
+				 System.out.println();
+				 System.out.println("1.리스트  2.보기 3.질문하기 4.답변하기");
+				 System.out.println("5.수정 6.삭제 0.이전메뉴");
+				 System.out.println("메뉴의 번호를 입력하세요.");
+				 String menu = scanner.nextLine();
+//				 String menu
+//				 = Input.getStringWithMessage("메뉴번호를 입력하세요");
+				 switch (menu) {
+				 case "1":
+					 System.out.println("============== ");
+					 System.out.println("| 질문답변 리스트 처리 |");
+					 System.out.println("==============");
+					 
+					 QnaListService qnaListService 
+					 = new QnaListService();
+					 
+					 List<QnaDTO> list = qnaListService.service();
+					 
+					 QnaView qnaView = new QnaView();
+					 qnaView.list(list);
+					 break;
+				 case "2":
+					 System.out.println("============== ");
+					 System.out.println("| 질문답변  보기 처리 |");
+					 System.out.println("==============");
+					 System.out.println("보여줄 글번호를 입력하세요");
+					  
+					 new QnaView().view(new QnaViewService().service
+					 	(Input.getIntWithMessageOfSmart("보여줄 글번호를 입력하세요"),1));
+					 
+					 break;
+				 case "3":
+					 System.out.println(" ============== ");
+					 System.out.println("| 질문답변 질문하기 처리 |");
+					 System.out.println(" ==============");
+					 
+//					 if(Main.login == null)
+//						 throw new NotLoginException();
+					 QnaDTO inDto = inputDTO();
+					 String id = "test";
+					 
+					 QnaWriteService qnaWriteService 
+					 = new QnaWriteService();
+					 
+					 qnaWriteService.service(inDto);
+					 break;
+				 
+				 case "4":
+					 System.out.println(" ============== ");
+					 System.out.println("| 질문답변 답변하기 처리 |");
+					 System.out.println(" ==============");
+					 
+//					 if(Main.login == null)
+//					 throw new NotLoginException();
+					 QnaDTO sourceDTO = getDTO("답변할 글 번호를 입력하세요.");
+
+					 QnaDTO inDTO = inputDTO();
+					 
+					 String answerId  = "admin";
+					 inDTO.setId(answerId);
+					 inDTO.setOperateNo(sourceDTO);
+					 
+					 QnaAnswerService qnaAnswerService 
+					 = new QnaAnswerService();
+					 qnaAnswerService.service(inDTO);
+					
+					 break;
+				 
+				 case "5":
+					 System.out.println("============== ");
+					 System.out.println("| 질문답변 수정 처리 |");
+					 System.out.println("==============");
+					 
+//					 if(Main.login == null)
+//					 throw new NotLoginException();
+					 
+					QnaDTO qnaDTO = getDTO("수정할 글번호 입력하세요");
+					changeDate(qnaDTO);
+					System.out.println(qnaDTO);
+					
+					QnaUpdateService qnaUpdateService
+					= new QnaUpdateService();
+					qnaUpdateService.service(qnaDTO);
+						break;
+				 case "6":
+					 System.out.println("============== ");
+					 System.out.println("| 질문답변 삭제 처리 |");
+					 System.out.println("==============");
+					 
+//					 if(SwitchMain.login == null)
+//							throw new NotLoginException();
+					 
+					  new QnaDeleteService()
+					  .service(Input.getIntWithMessageOfSmart("삭제할 글번호 입력"));
+					 
+					 break;
+				 case "0":
+					 System.out.println("이전 메뉴");
+					 
+					 return;
+				 default:
+					 System.out.println("==================");
+					 System.out.println(" 잘못된 메뉴를 일력하셨습니다!");
+					 System.out.println("   다시 입력해 주세요!    ");
+					 System.out.println("==================");
+					 break;
+				 }
+//			 }catch (NotLoginException e) {
+//					System.out.println(e.getMessage());
+//					// 로그인 처리 
+//					SwitchMain.login();
+//					// 로그인 정보 출력
+//					Output.loginInfor();
+			 } catch (Exception e) {
+				 e.printStackTrace();
+				 System.out.println("==============================");
+				 System.out.println("|질문답변을 처리하는 중 오류가 발생되었습니다      |");
+				 System.out.println("|      잠시 후에 다시 시도해 주세요!!!   |");
+				 System.out.println("|계속 진행이 안되면 전산담당자에게 연락해 주세요  |");
+				 System.out.println("==============================");
+			 }
+		 }
+	}
+
+	private void changeDate(QnaDTO dto) {
+		// TODO Auto-generated method stub
+		while(true) {
+			System.out.println("========변경 내용 선택 ========");
+			System.out.println("========================");
+			System.out.println("| 1.제목   | 2.내용   | 0.수정완료 |");
+			System.out.println("========================");
+			String menu = Input.getStringWithMessage("========수정 항목 선택 ========");
+			
+			switch(menu) {
+			case "1":
+				dto.setTitle(Input.getStringWithMessage("제목"));
+				break;
+			case "2":
+				dto.setContent(Input.getStringWithMessage("내용"));
+				break;
+			case "0":
+				return;
+				
+			default:
+				System.out.println("잘못된 항목을 선택하셨습니다.");
+				break;
+			}
+			new QnaView().view(dto);
+		}
+	}
+
+	private QnaDTO getDTO(String msg) throws Exception {
+		// TODO Auto-generated method stub
+		int no = Input.getIntWithMessageOfSmart(msg);
+		
+		QnaViewService qnaViewService
+		= new QnaViewService();
+		
+		QnaDTO dto = qnaViewService.service(no, 0);
+		
+		QnaView qnaView = new QnaView();
+		qnaView.view(dto);
+		
+		return dto;
+	}
+
+	private QnaDTO inputDTO() {
+		// TODO Auto-generated method stub
+		QnaDTO dto = new QnaDTO();
+		dto.setTitle(Input.getStringWithMessage("제목"));
+		dto.setContent(Input.getStringWithMessage("내용"));
+		return dto;
+	}
+}

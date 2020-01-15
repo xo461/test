@@ -1,0 +1,10 @@
+package ch15fileCopy;
+
+public class FileCopy2_15_6 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

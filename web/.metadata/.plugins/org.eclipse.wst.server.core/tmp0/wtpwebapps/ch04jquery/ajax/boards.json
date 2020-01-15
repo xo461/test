@@ -1,0 +1,23 @@
+[
+	{
+		"no": 10,
+		"title": "java",
+		"writer": "정태환",
+		"writeDate": "2019-12-03",
+		"hit": 1004
+	},
+	{
+		"no": 9,
+		"title": "Oracle",
+		"writer": "정태환",
+		"writeDate": "2019-12-02",
+		"hit": 108
+	},
+	{
+		"no": 8,
+		"title": "빅데이터",
+		"writer": "정태환",
+		"writeDate": "2019-12-01",
+		"hit": 506
+	}
+]

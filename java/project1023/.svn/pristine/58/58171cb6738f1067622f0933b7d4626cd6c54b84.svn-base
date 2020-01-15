@@ -1,0 +1,61 @@
+package com.webjjang.notice.controller;
+
+import java.util.Scanner;
+
+public class NoticeController {
+
+
+	//같은 Main 안에 들어와있는 함수. Main 안에서만 사용 가능
+	public static Scanner scanner = new Scanner(System.in);
+	public void execute() {
+		// TODO Auto-generated method stub
+
+		//메인 무한반복처리 - 0을 입력하면 종료시킨다.
+		while(true) {
+		
+		// 메인메뉴 출력
+		System.out.println("1.List 2.View 3.Create");
+		System.out.println("4.Edit 5.Delete 0.former menu");
+		
+		// 메인메뉴 번호선택
+		System.out.println("Enter the number of the menu.");
+		String menu = scanner.nextLine();
+		
+		// 메인메뉴 처리
+		switch (menu) {
+		case "1":
+			System.out.println("Notice list has been processed.");			
+			//객체생성 - main 메모리에 올린다 (new)
+			NoticeController noticeController
+			= new NoticeController();
+			noticeController.execute();
+			break;
+		case "2":
+			System.out.println("Notice View has been processed.");
+			
+			break;
+		case "3":
+			System.out.println("Notice Create has been processed.");
+			break;
+		case "4":
+			System.out.println("Notice Edit has been processed.");
+			break;
+		case "5":
+			System.out.println("Notice Delete has been processed.");
+			break;
+		case "0":
+			System.out.println("The program will be terminated");
+			//0 입력시 시스템 종료
+			return;
+			
+		//0~6 이외의 값 입력시 : 
+		default:
+			System.out.println("Wrong number entered. Please try again.");	
+			break;
+		}
+		
+			
+		}
+	}
+
+}

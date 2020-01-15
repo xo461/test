@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!-- html 5에서는 dtd파일을 따로 지정하지는 않는다. -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- 1~10 까지 출력하는 프로그램 작성  -->
+<%
+// 스크립트릿 작성 - 자바 부분입니다.
+for(int i = 1; i <= 10; i++)
+	out.write(i);	
+%>
+
+</body>
+</html>

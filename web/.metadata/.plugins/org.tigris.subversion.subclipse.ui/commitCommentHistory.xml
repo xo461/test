@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommitComments>	<CommitComment>매거진 - 에디터 별 수정 삭제 보기 수정 </CommitComment>
+	<CommitComment>매거진 오류 수정 - </CommitComment>
+	<CommitComment>매거진 오류 수정 - 글쓰기 부제목 글자 제한 (perpagenum가 넘어가면 리스트 이상하게 나오는것 수정)
+
+질문답변 오류 수정 - 글번호 순서번호 오류 수정 </CommitComment>
+	<CommitComment>질문답변 컨트롤러 / views 수정 </CommitComment>
+	<CommitComment>qna 컨트롤러 setOperateNo controller 설정 </CommitComment>
+	<CommitComment>질문답변 수정</CommitComment>
+	<CommitComment>질문 답변  controller, DAO, DTO, Service 추가 
+필터 권한 추가</CommitComment>
+	<CommitComment>질문 답변 jsp 추가 </CommitComment>
+	<CommitComment>질문 답변  beans, controller, DAO, DTO, Service 추가 
+필터 권한 추가</CommitComment>
+	<CommitComment>질문 답변  controller, DAO, DTO, Service 추가 
+필터 권한 추가  </CommitComment>
+</CommitComments>

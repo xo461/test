@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시판 </title>
+<script type="text/javascript">
+function main() {
+
+	document.getElementById("writeForm").addEventListener("submit", function(e){
+		writeForm = document.writeForm;
+		
+	
+		var title = writeForm.title.value
+		var content = writeForm.content.value
+		var writer = writeForm.writer.value
+	
+		if(title == ""){
+			
+			// 경고창 생성	
+			alert("제목은 필수 항목입니다.");
+			
+			// 입력란에 커서 위치
+			document.getElementById("title").focus();
+			
+			//submit 취소
+			e.preventDefault();
+			return false;
+		}
+		if(content == ""){
+			
+			// 경고창 생성	
+			alert("내용은 필수 항목입니다.");
+			
+			// 입력란에 커서 위치
+			document.getElementById("content").focus();
+			
+			//submit 취소
+			e.preventDefault();
+			return false;
+		}
+		if(writer == ""){
+			
+			// 경고창 생성	
+			alert("작성자는  필수 항목입니다.");
+			
+			// 입력란에 커서 위치
+			document.getElementById("writer").focus();
+			
+			//submit 취소
+			e.preventDefault();
+			return false;
+		}
+		if(!(title.length >=4 && title.length <=100)){
+			alert("제목은 길이가 4자 이상 100자 이내여야 합니다.");
+			document.getElementById("title").focus();
+			
+			e.preventDefault();
+			return false;
+		}
+		
+		if(!(content.length >=5 )){
+			alert("내용은 길이가 5자이상 이여야 합니다.");
+			document.getElementById("content").focus();
+			
+			e.preventDefault();
+			return false;
+		}
+		if(!(writer.length >=2)){
+			alert("작성자는 길이가 2자 이상 이여야 합니다.");
+			document.getElementById("writer").focus();
+			
+			e.preventDefault();
+			return false;
+		}
+		return true;
+	});
+}
+</script>
+</head>
+<body onload="main();">
+<h2>게시판 </h2>
+<form action="#" id="writeForm" method="post" name="writeForm">
+	제목:<input name="title" id="title"/><br/>
+	내용:<input name="content" id="content"/><br/>
+	작성자:<input name="writer" id="writer"/><br/>
+	<button id="submitBtn">등록하기</button>
+</form>
+</body>
+</html>

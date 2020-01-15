@@ -1,0 +1,135 @@
+package com.webjjang.notice.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.webjjang.notice.dto.NoticeDTO;
+
+
+public class NoticeDAO {
+
+	String url = "jdbc:oracle:thin:@402-oracle:1521:orcl";
+	String id = "c##java14";
+	String pw = "java14";
+
+	String driver ="oracle.jdbc.driver.OracleDriver";
+
+	
+	
+	//1. 게시판 리스트 가져오기
+	
+	public List<NoticeDTO> list() throws Exception {
+		
+		List<NoticeDTO> list = null;
+		//객체에서 사용할 DB 정보 -> list(), view()... 다른 메서드에서 다 필요로 하기 때문에
+		//전역변수로 선언한다.
+		
+		
+		Class.forName(driver);
+		Connection con = DriverManager.getConnection(url, id, pw);
+		
+		String sql = " select no, title, writer, to_char(writeDate, 'yyyy-mm-dd') writeDate, hit from notice order by no desc ";
+		
+		no, title, to_char(startDate, 'yyyy-mm-dd') endDate, writeDate, updateDate;
+		
+		
+		System.out.println("BoardDAO.list().sql"+sql);
+
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		if(rs != null) {
+			while(rs.next()) {
+				//최종적으로 저장할 list가 null인 경우에는 생성해서 사용가능하도록 해준다.
+				if(list == null) list = new ArrayList<BoardDTO>();
+				//
+				
+				//게시판 하나의 데이터를 담는 객체 생성
+				BoardDTO dto = new BoardDTO();
+				//데이터담기
+				dto.setNo(rs.getInt("no"));
+				dto.setTitle(rs.getString("title"));
+				dto.setWriter(rs.getString("writer"));
+				dto.setWriteDate(rs.getString("writeDate"));
+				dto.setHit(rs.getInt("hit"));
+				
+				list.add(dto);
+				
+				
+			}// end of while
+		}// end of if
+		
+		con.close();
+		pstmt.close();
+		rs.close();
+				
+		System.out.println("BoardDAO.list().list :"+list);
+		return list;
+		//end of list
+		
+	}
+
+
+
+
+
+
+
+//2. 게시판 글보기 데이터 가져오기
+//글번호에 따라서 한개 데이터 전달받는다
+//데이터 가져오기 실패하면 예외처리를 반드시 해야함 (throw시키는것으로 대신 가능)
+public BoardDTO view(int no) throws Exception {
+	
+	System.out.println("BoardDAO.view().no:"+no);
+	
+	BoardDTO dto = null;
+	//객체에서 사용할 DB 정보 -> list(), view()... 다른 메서드에서 다 필요로 하기 때문에
+	//전역변수로 선언한다.
+	
+
+
+//데이터 가져오는 처리문
+	//?는 값을 대체시키는 대체문자에 해당됨
+String sql = " select no, title, content, writer, to_char(writeDate, 'yyyy-mm-dd') writeDate, hit from board where no = ? ";
+System.out.println("BoardDAO.list().sql"+sql);
+Class.forName(driver);
+Connection con = DriverManager.getConnection(url, id, pw);
+
+PreparedStatement pstmt = con.prepareStatement(sql);
+
+//?의 위치, ?를 대체해야 할 값
+pstmt.setInt(1, no);
+
+ResultSet rs = pstmt.executeQuery();
+
+if(rs != null && rs.next()) {
+			// 최종적으로 저장할 list가 null인 경우에는 생성해서 사용가능하도록 해준다.
+
+			// 게시판 하나의 데이터를 담는 객체 생성
+			dto = new BoardDTO();
+			// 데이터담기
+			dto.setNo(rs.getInt("no"));
+			dto.setTitle(rs.getString("title"));
+			dto.setContent(rs.getString("Content"));
+			dto.setWriter(rs.getString("writer"));
+			dto.setWriteDate(rs.getString("writeDate"));
+			dto.setHit(rs.getInt("hit"));
+	}// end of while
+
+con.close();
+pstmt.close();
+rs.close();
+		
+System.out.println("BoardDAO.list().dto :"+dto);
+
+return dto;
+
+}//end of list
+
+}
+

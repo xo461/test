@@ -1,0 +1,19 @@
+package com.webjjang.message.service;
+
+import com.webjjang.message.dao.MessageDAO;
+import com.webjjang.message.dto.MessageDTO;
+
+public class MessageViewService {
+
+	// 데이터 Controller <-> DAO
+	// 글 번호를 Controller에서 받아서 처리한다.
+	public MessageDTO service(int no) throws Exception {
+
+		System.out.println("BoardListService.service()");
+		// 데이터 처리부분에 해당된다.
+		// 데이터를 오라클에서 가져오기 위해 객체 생성하고 호출
+		MessageDAO dao = new MessageDAO();
+		return dao.view(no);
+		// BoardController - BoardListService - [BoardDAO]
+	}
+}

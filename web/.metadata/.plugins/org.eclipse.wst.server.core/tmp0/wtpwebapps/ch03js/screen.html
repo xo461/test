@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="./js/util.js"></script>
+<style type="text/css">
+#centerDiv{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width : 300px;
+	height: 180px;
+	background: orange;
+}
+</style>
+</head>
+<body>
+<div>screen.width/screen.height</div>
+<div id="screenwh"></div>
+
+<div>screen.availwidth/screen.availheight</div>
+<div id="screenwh2"></div>
+
+<div>window.innerWidth/window.innerHeight</div>
+<div id="windowwh"></div>
+
+<div>window.outerwidth/window.outerHeight</div>
+<div id="windowowh"></div>
+
+<div id="centerDiv"></div>
+
+<script type="text/javascript">
+// 전체 모니터의 표시 할 수 있는 너비와 높이 
+get("#screenwh").innerHTML = screen.width + " / " + screen.height;
+// 작업 표시줄 제외
+get("#screenwh2").innerHTML = screen.availWidth + " / " + screen.availHeight;
+// 브라우저의 줌을 적용한 너비와 높이 
+get("#windowwh").innerHTML = window.innerWidth + " / " + window.innerHeight;
+// 브라우저의 줌을 적용하지 않고 외부의 너비와 높이를 기준으로 한 너비와 높이 
+get("#windowowh").innerHTML = window.outerWidth + " / " + window.outerHeight;
+// centerDiv의 top과 left
+var centerObj = get("#centerDiv");
+// centerObj.style.top = 100 +"px";
+// div의 높이 구하기
+divHeight = centerObj.offsetHeight
+// div의 너비 구하기 
+divWidth = centerObj.offsetWidth
+// alert(divWidth + " * " + divHeight);
+
+objTop = (window.innerHeight - divHeight) / 2 - 20 + "px";
+objLeft = (window.innerWidth - divWidth) / 2 + "px";
+alert(objTop);
+alert(objLeft);
+centerObj.style.top = objTop;
+centerObj.style.left = objLeft;
+// alert(centerObj.style.top);
+</script>
+</body>
+</html>

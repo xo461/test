@@ -1,0 +1,21 @@
+package main;
+
+import bean.Beans;
+
+public class Main {
+	
+	//project의 시작 
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// 객체가 생성이 되도록 Beans를 한번 찾아준다.
+		try {
+			Class.forName("bean.Beans");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}

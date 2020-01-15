@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;board.json&apos; to &apos;ajax&apos;&#x0D;&#x0A;- Original project: &apos;ch04jquery&apos;&#x0D;&#x0A;- Destination element: &apos;ajax&apos;&#x0D;&#x0A;- Original element: &apos;board.json&apos;" description="Copy file" element1="WebContent/ajax/board.json" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1575342494877" target="/ch04jquery/WebContent/ajax" units="0" version="1.0"/>
+</session>

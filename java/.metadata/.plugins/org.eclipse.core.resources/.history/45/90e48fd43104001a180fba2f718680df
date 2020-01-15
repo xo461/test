@@ -1,0 +1,8 @@
+package ch15io;
+
+import java.io.Serializable;
+
+// 직렬화 가능한 클래스로 만들기 위해서 Serializable 인터페이스를 상속받게 만든다. 
+public class UserInfo implements Serializable{
+
+}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="true"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<item key="selection" value="deleteFile"/>
+		<list key="findhistory">
+			<item value="deleteFile"/>
+			<item value="setPer"/>
+			<item value="이미지"/>
+			<item value="image"/>
+			<item value="Image"/>
+			<item value="게시판"/>
+			<item value="board"/>
+			<item value="Board"/>
+			<item value="Writer"/>
+			<item value="writer"/>
+			<item value="Logo"/>
+			<item value="logo"/>
+			<item value="Imgae"/>
+			<item value="indexOf"/>
+			<item value="질문답변"/>
+		</list>
+		<list key="replacehistory">
+			<item value="매거진"/>
+			<item value="magazine"/>
+			<item value="Magazine"/>
+			<item value="Id"/>
+			<item value="id"/>
+			<item value="이미지"/>
+			<item value="Image"/>
+			<item value="image"/>
+			<item value="Imgae"/>
+			<item value="imgae"/>
+			<item value="회원"/>
+			<item value="Member"/>
+			<item value="member"/>
+			<item value="회원관리"/>
+			<item value="공지사항"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1027"/>
+		<item key="DIALOG_Y_ORIGIN" value="286"/>
+		<item key="DIALOG_WIDTH" value="288"/>
+		<item key="DIALOG_HEIGHT" value="391"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="249"/>
+		<item key="DIALOG_Y_ORIGIN" value="394"/>
+	</section>
+</section>

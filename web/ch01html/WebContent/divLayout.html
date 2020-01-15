@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Div Layout</title>
+<style type="text/css">
+div {
+	border: 1px solid #aaa;
+}
+
+#section {
+	float: left;
+	width: 75%;
+}
+
+#aside {
+	float: right;
+	width: 23%;
+}
+
+.container {
+	clear: both;
+}
+</style>
+</head>
+<body>
+	<div id="header" class="container">header</div>
+	<div id="menu" class="container">menu</div>
+	<div class="container" style="border: 1px solid orange;">
+		<div id="section">section</div>
+		<div id="aside">hot</div>
+	</div>
+	<div id="footer"class="container">footer</div>
+</body>
+</html>

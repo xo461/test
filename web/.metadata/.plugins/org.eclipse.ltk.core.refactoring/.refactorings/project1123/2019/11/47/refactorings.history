@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;main.webjjang.main&apos; to &apos;com.webjjang.main&apos;&#x0D;&#x0A;- Original project: &apos;project1123&apos;&#x0D;&#x0A;- Original element: &apos;project1123/src/main.webjjang.main&apos;&#x0D;&#x0A;- Renamed element: &apos;project1123/src/com.webjjang.main&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;main.webjjang.main&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;main.webjjang.main" name="com.webjjang.main" qualified="false" references="true" stamp="1574319303070" textual="false" version="1.0"/>
+</session>

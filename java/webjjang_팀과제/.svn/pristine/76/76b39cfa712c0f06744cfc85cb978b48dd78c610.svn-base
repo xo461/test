@@ -1,0 +1,176 @@
+package com.webjjang.message.controller;
+
+import java.util.List;
+
+import com.webjjang.main.Main;
+import com.webjjang.message.dto.MessageDTO;
+import com.webjjang.message.service.MessageViewService;
+import com.webjjang.message.service.MessageDeleteService;
+import com.webjjang.message.service.MessageListService;
+import com.webjjang.message.service.MessageSendService;
+import com.webjjang.message.service.MessageUpdateService;
+import com.webjjang.util.io.Input;
+import com.webjjang.util.io.Output;
+import com.webjjang.view.MessageView;
+
+public class MessageController {
+
+	public void execute() {
+
+		while (true) {
+			try {
+				Output.title("쪽지함");
+				Output.menu("1. 쪽지 목록", "2. 쪽지 보기", "3. 쪽지 보내기", "4. 쪽지 수정", "5. 쪽지 삭제",
+						("6. " + ((Main.login == null) ? "로그인" : "로그아웃")), "0. 이전 메뉴");
+				String menu = Input.getStringWithMessage("메뉴를 선택하세요");
+				switch (menu) {
+				case "1":
+					msgLoginCheck();
+					Loop1: while (true) {
+						Output.menu("1. 수신함", "2. 발신함", "3. 전체 메시지 확인", "0. 이전메뉴");
+						String msgMenu = Input.getStringWithMessage("메뉴를 선택하세요");
+						switch (msgMenu) {
+						case "1":
+							System.out.println("1. 수신함 처리");
+							viewData(1);
+							break;
+						case "2":
+							System.out.println("2. 발신함 처리");
+							viewData(2);
+							break;
+						case "3":
+							System.out.println("전체 메시지");
+							viewData(3);
+							break;
+						case "0":
+							break Loop1;
+						default:
+							System.out.println("잘못 입력하셨습니다");
+							break;
+						} // end of switch(msgMenu)
+					} // end of while
+					break;
+				case "2":
+					System.out.println("2. 쪽지 보기 처리");
+					msgLoginCheck();
+					getDTO("볼 쪽지 번호를 선택하세요.", false);
+					break;
+
+				case "3":
+					System.out.println("3. 쪽지 보내기 처리");
+					msgLoginCheck();
+					MessageDTO sendDTO = new MessageDTO();
+					sendDTO.setContent(Input.getStringWithMessage("내용"));
+					sendDTO.setAccepter(Input.getStringWithMessage("받는 이"));
+					MessageSendService messageSendService = new MessageSendService();
+					messageSendService.service(sendDTO);
+					break;
+				case "4":
+					System.out.println("4. 쪽지 수정 처리");
+					msgLoginCheck();
+					MessageDTO upDTO = getDTO("수정할 쪽지 번호를 입력하세요.", true);
+
+					if (upDTO.getSender().equals(Main.login.getId())) {
+						if (upDTO.getAcceptDate() != null) {
+							System.out.println("상대방이 이미 읽은 쪽지는 수정할 수 없습니다.");
+							break;
+						}
+						updateData(upDTO);
+						MessageUpdateService messageUpdateService = new MessageUpdateService();
+						messageUpdateService.service(upDTO);
+						break;
+					} else {
+						System.out.println("직접 보낸 메시지만 수정할 수 있습니다.");
+						break;
+					}
+					// end of if else
+				case "5":
+					System.out.println("5. 쪽지 삭제 처리");
+					msgLoginCheck();
+					MessageDTO deleteDTO = getDTO("삭제할 쪽지 번호를 입력하세요", true);
+					if (deleteDTO.getSender().equals(Main.login.getId())||deleteDTO.getAccepter().equals(Main.login.getId())) {
+						if (deleteDTO.getAcceptDate() != null) {
+							System.out.println("상대방이 이미 읽은 쪽지는 삭제할 수 없습니다.");
+							break;
+						}
+						MessageDeleteService messageDeleteService = new MessageDeleteService();
+						messageDeleteService.service(deleteDTO.getNo());
+						break;
+					} else {
+						System.out.println("직접 보냈거나 받은 메세지만 삭제할 수 있습니다.");
+						break;
+					}
+				case "6":
+					if (Main.login != null) {
+						// 로그인 상태 -> 로그아웃 처리 -> login = null;
+						Main.login = null;
+						System.out.println("**[로그아웃 처리가 되었습니다.]**");
+					} else {
+						Main.login();
+					}
+					break;
+				case "0":
+					return;
+				default:
+					System.out.println("잘못 입력하셨습니다.");
+					break;
+				}// End of switch
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} // end of while
+	}// end of MessageController.execute
+
+	public MessageDTO getDTO(String msg, boolean accepted) throws Exception {
+		int no = Input.getIntWithMessageOfSmart(msg);
+
+		MessageViewService messageViewService = new MessageViewService();
+		MessageDTO dto = messageViewService.service(no, accepted);
+		if (!(Main.login.getId().equals(dto.getSender()) || Main.login.getId().equals(dto.getAccepter()))) {
+			Output.printLine();
+			System.out.println("타인의 메세지는 열람할 수 없습니다.");
+			return dto;
+		}
+		MessageView messageView = new MessageView();
+		messageView.view(dto);
+		return dto;
+
+	} // end of getDTO
+
+	public void updateData(MessageDTO dto) throws Exception {
+		while (true) {
+
+			String choice = Input.getStringWithMessage("수정항목을 선택하세요. \n 1.내용 0. 수정 완료");
+			switch (choice) {
+
+			case "1":
+				dto.setContent(Input.getStringWithMessage("내용"));
+				break;
+
+			case "0":
+				return;
+
+			default:
+				System.out.println("잘못 누르셨습니다.");
+				break;
+			} // end of switch case
+			new MessageView().view(dto);
+		}
+	} // end of updateData()
+
+	public void viewData(int no) throws Exception {
+		MessageListService messageListService = new MessageListService();
+		List<MessageDTO> list = messageListService.service(no);
+
+		MessageView messageView = new MessageView();
+		messageView.list(list);
+	} // end of viewData()
+
+	public void msgLoginCheck() {
+		if (Main.login == null) {
+			System.out.println("Login이 필요한 서비스입니다. Login을 해주세요.");
+			while(Main.login==null)
+				Main.login();
+		} // end of if
+	} // end of msgLoginCheck()
+}

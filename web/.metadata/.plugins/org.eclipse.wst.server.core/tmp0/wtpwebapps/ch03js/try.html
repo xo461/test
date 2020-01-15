@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+5~10 사이의 숫자를 입력하세요.<br/>
+<input id="demo"><br/>
+<!-- 입력된 숫자가 잘 못 입력이 된 경우 나타나는 메세지 -->
+<div id="message"></div><br/>
+<button onclick = "myFunction()">입력</button>
+
+
+<script type="text/javascript">
+function myFunction() {
+	var message, x;
+	//메세지를 표시하는 곳 - div
+	message = document.getElementById("message");
+	message.innerHTML="";
+	// 메시지를 입력하는 곳
+	x = document.getElementById("demo").value;
+	try{
+		// 입력란이 비어 있으면 예외처리 
+		if(x == "")throw"비어 있습니다.";
+		// 숫자가 아니면 예외처리
+		if(isNaN(x))throw"숫자가 아님";
+		x = Number(x);
+		// 숫자인 경우 5~10사이의 숫자가 아니면 예외 처리 
+		if(x > 10)throw"너무큼";
+		if(x < 5)throw"너무 적음";
+		message.innerHTML="적당한 데이터입니다.";
+	}
+	catch(err){
+		// err의 타입을 alert()를 이용해서 출력해봐라.
+		alert(typeof(err));
+// 		예외가 발생 시 처리 
+		message.innerHTML = "Error:" + err+".";
+	}
+	finally{
+		// 입력된 데이터는 지우자. - 반드시 실핼되는 부분
+		document.getElementById("demo").value="";
+	}
+}
+</script>
+
+</body>
+</html>

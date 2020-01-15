@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="./js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+$(function() {
+// 	alert("start");
+	$("#in").keyup(function () {
+// 		alert("keyup");
+		$("#mirrorDiv").html($("#in").val());
+	});
+});
+</script>
+
+</head>
+<body>
+<input id="in">
+<div id="mirrorDiv"></div>
+</body>
+</html>

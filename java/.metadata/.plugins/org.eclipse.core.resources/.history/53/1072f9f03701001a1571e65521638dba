@@ -1,0 +1,26 @@
+package main;
+
+public class Main {
+	
+	//project의 시작 
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// 객체가 생성이 되도록 Beans를 한번 찾아준다.
+		try {
+			Class.forName("bean.Beans");
+			
+			while(true) {
+			System.out.println("[메인] --------------");
+			System.out.println("1.리스트 2.글보기 3.글쓰기");
+			System.out.println("4.글수정 0.프로그램 종료");
+			
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}

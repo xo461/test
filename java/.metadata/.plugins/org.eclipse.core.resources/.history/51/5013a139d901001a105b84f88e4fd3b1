@@ -1,0 +1,30 @@
+/*
+ * 프로젝트의 실행되어질 모든 Controller와 Service,DAO 객체를 생성해서 저장하고 있는 객체 
+ * static{}에서 모든 객체를 생성 
+ * Map<String, Controller> Controller : 생성도니 객체를 저장하는 변수
+ * Map<String, Service> service : 생성도니 객체를 저장하는 변수
+ * Map<String, Object> dao : 생성도니 객체를 저장하는 변수
+ * 호출해서 사용하려는 곳에서 해당되는 Controller를 받아가는 메서드 : getController()
+ * 호출해서 사용하려는 곳에서 해당되는 service를 받아가는 메서드 : getService()
+ * 호출해서 사용하려는 곳에서 해당되는 DAO를 받아가는 메서드 : getDAO()
+ * BoardController -> BoardListService / BoardViewService 
+ * -> BoardDAO 
+ */
+
+package com.webjjang.bean;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.webjjang.main.Controller;
+import com.webjjang.main.Service;
+
+public class Beans {
+
+	private static Map<String, Controller> Controller = new HashMap<>(); 
+
+	private static Map<String, Service> Service = new HashMap<>(); 
+ 
+	private static Map<String, Object> Dao = new HashMap<>(); 
+	
+}

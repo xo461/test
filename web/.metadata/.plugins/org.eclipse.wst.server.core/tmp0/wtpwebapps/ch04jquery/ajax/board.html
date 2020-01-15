@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시판 리스트 </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$.getJSON("boards.json", function (datas) {
+			if(datas.length > 0){
+				$.each(datas, function (idx, data) {
+					var html = "<tr class='dataRow'>";
+					html += "<td class='no'>" + data.no + "</td>"
+					html += "<td>" + data.title + "</td>"
+					html += "<td>" + data.writer + "</td>"
+					html += "<td>" + data.writeDate + "</td>"
+					html += "<td>" + data.hit + "</td>"
+					html += "</tr>";
+					$("#tbody").append(html);
+				});
+			}
+		});
+		$("#tbody").on("click", ".dataRow", function(){
+			alert("클릭함:글번호 - "+$(this).find(".no").text());
+		});
+	});
+</script>
+</head>
+<body>
+<h2>게시판 리스트</h2>
+<table class="table">
+<thead>
+	<tr>
+		<td>글번호</td>
+		<td>제목</td>
+		<td>작성자</td>
+		<td>작성일</td>
+		<td>조회수</td>
+	</tr>
+</thead>
+<tbody id="tbody"></tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,13 @@
+INDEX VERSION 1.131
+D:\workspace\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4034852443.index
+\webjjangcom_ver2\src
+D:\workspace\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2888642171.index
+\ch03jsp\src
+D:\workspace\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4141507068.index
+\webjjangcom_ver2\src
+D:\workspace\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3459505734.index
+\webjjangcom_ver2\src
+D:\workspace\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2221016373.index
+\webjjangcom_ver2\src
+D:\workspace\jsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1863797718.index
+\ch10session\src
